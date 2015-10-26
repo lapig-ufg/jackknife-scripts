@@ -1,0 +1,1 @@
+find . -mindepth 1 -type d -print0 | while read -d '' -r dir; do     files=("$dir"/*);     printf "%s => %5d files\n" "$dir" "${#files[@]}"; done | sort

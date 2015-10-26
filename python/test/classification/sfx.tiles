@@ -1,0 +1,9 @@
+./classification.py --no-download --no-validate -i '224064' -t R10 -ntr 2000
+./classification.py --no-download --no-validate -i '224065' -t R10 -ntr 2000
+./classification.py --no-download --no-validate -i '224066' -t R10 -ntr 2000
+./classification.py --no-download --no-validate -i '225063' -t R10 -ntr 2000
+./classification.py --no-download --no-validate -i '225064' -t R10 -ntr 2000
+./classification.py --no-download --no-validate -i '225065' -t R10 -ntr 2000
+./classification.py --no-download --no-validate -i '225066' -t R10 -ntr 2000
+./classification.py --no-download --no-validate -i '226064' -t R10 -ntr 2000
+./classification.py --no-download --no-validate -i '226065' -t R10 -ntr 2000 

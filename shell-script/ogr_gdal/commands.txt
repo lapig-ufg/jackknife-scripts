@@ -1,0 +1,12 @@
+ogr2ogr -clipsrclayer es_mt_limite_estadual.shp  -clipsrc /home/leandro/Documentos/Shp/Gerais/es_mt_limite_estadual.shp training-dataset-validation.shp ../MT/training-dataset-validation.shp
+ogr2ogr -sql "SELECT * FROM pa_br_cenas_landsat_1000_2001_LAPIG WHERE ORB_PONTO = '224-69'" pa_br_landsat_224_69.shp pa_br_cenas_landsat_1000_2001_LAPIG.shp
+ogr2ogr -clipsrclayer pa_br_landsat_224_69  -clipsrc /home/leandro/Documentos/Shp/Gerais/pa_br_landsat_224_69.shp 224-69/training-dataset-validation-224-69.shp  training-dataset-validation.shp
+
+gdalwarp -cutline /home/leandro/Documentos/Shp/Gerais/pa_br_landsat_224_69.shp random-forest-ee.tif random-forest-ee-clip.tif
+gdal_rasterize -tr 0.001 0.001 -burn 1 -a_nodata 0 -ot Byte -co COMPRESS=lzw -co INTERLEAVE=BAND -co NBITS=1 -co TILED=YES $@
+gdal_translate -ot Float32 -co TFW=YES -co TILED=yes -co COMPRESS=DEFLATE $@
+gdal_calc.py -A br_pasture.tif --calc="(A >= 50)" --NoDataValue=0 --co=COMPRESS=DEFLATE --co=TILED=YES --co BIGTIFF=YES --co=NBITS=1 --outfile=br_pasture_mask.tif
+gdal_merge.py -o ../br_pasture.tif -co COMPRESS=lzw -co TILED=YES -n -128 -a_nodata 0 -ot Byte *.tif
+
+cat ../run/seed.yaml | sed 's/grids\:\ \[webmercator\]/grids\:\ \[webmercator\]\n    levels\:\ [0,1,2,3,4,5,6]/g' | grep -iv 'remove_before:\|time:' > ../run/seed-2.yaml
+mapproxy-seed -f mapproxy.yaml -c 4 seed-2.yaml --seed ALL
