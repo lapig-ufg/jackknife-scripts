@@ -1,8 +1,8 @@
 #!/bin/bash
 
-MAX_DAYS=30
-TMP_DIR='/data/lapig/TMP'
+MAX_DAYS=7
+TMP_DIR='/data/TEMP'
 
 cd $TMP_DIR
-find -name '*' -ctime +$MAX_DAYS -exec ls "{}" \;
-find -name '*' -type d -depth -empty -exec ls "{}" \; #rmdir
+find -name '*' -type f -ctime 7 -exec ls "{}" \;
+find -depth -type d -empty -delete
