@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for file in $(find -name '*.pdf'); do
+	name=$(basename $file .pdf)
+	echo "$name processing..."
+	pdftotext -layout -f 0 $file -		
+	 | sed -e :a -e 's/^.\{1,78\}$/ &/;ta'			
+	 | sed -n 'G; s/\n/&&/; /^\([ -~]*\n\).*\n\1/d; s/\n//; h; P' 
+	 | sed -r 's/  +/\#/g'			
+	 | sed 's/^[ \t]*//'			
+	 > CSV/$name.csv
+done
