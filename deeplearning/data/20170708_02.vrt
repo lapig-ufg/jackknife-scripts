@@ -1,0 +1,13 @@
+<VRTDataset rasterXSize="3684" rasterYSize="2803">
+  <SRS>PROJCS["WGS 84 / UTM zone 22S",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",-51],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",10000000],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32722"]]</SRS>
+  <GeoTransform>  5.3643000000000000e+05,  3.0000000000000000e+00,  0.0000000000000000e+00,  8.2547580000000000e+06,  0.0000000000000000e+00, -3.0000000000000000e+00</GeoTransform>
+  <VRTRasterBand dataType="UInt16" band="1">
+    <SimpleSource>
+      <SourceFilename relativeToVRT="1">./20170708.tif</SourceFilename>
+      <SourceBand>2</SourceBand>
+      <SourceProperties RasterXSize="3684" RasterYSize="2803" DataType="UInt16" BlockXSize="3684" BlockYSize="1" />
+      <SrcRect xOff="0" yOff="0" xSize="3684" ySize="2803" />
+      <DstRect xOff="0" yOff="0" xSize="3684" ySize="2803" />
+    </SimpleSource>
+  </VRTRasterBand>
+</VRTDataset>
