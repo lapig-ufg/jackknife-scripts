@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# To build mosaics with gdal.
+#
+gdalbuildvrt flags.vrt flags/flags-[0-9]*-1.tif
+gdal_translate -a_srs 'EPSG:4326' -co COMPRESS=LZW -co TILED=True flags.vrt bfast_br_mosaics/flags.tif
+
+
+
+# Using internal nodata values (e.g. -3.4e+38) for image
+# Remove (e.g. -3.4e+38) and put nodata
+gdalwarp -dstnodata nan -ot Float32 -co COMPRESS=LZW -co TILED=True -co BIGTIFF=Yes go_srtm_declividade_30m_pastagem.tif go_srtm_declividade_30m_pastagem_nan.tif

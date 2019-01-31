@@ -91,7 +91,7 @@ def zonal_stats(feat, input_zone_polygon, input_value_raster, nb):
     validdata = dataraster[validmask]
     
     if len(validdata) > 0:
-        return numpy.mean(validdata), (len(validdata) * 29.1336) / 10000
+        return numpy.mean(validdata), (len(validdata) * 29.1336 * 29.1336) / 10000
     else:
         return -1.0, 0
 

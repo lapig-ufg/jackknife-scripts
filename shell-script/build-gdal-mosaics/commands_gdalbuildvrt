@@ -1,6 +1,0 @@
-#!/bin/bash
-#
-# To build mosaics with gdal.
-#
-gdalbuildvrt flags.vrt flags/flags-[0-9]*-1.tif
-gdal_translate -a_srs 'EPSG:4326' -co COMPRESS=LZW -co TILED=True flags.vrt bfast_br_mosaics/flags.tif
