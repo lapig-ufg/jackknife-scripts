@@ -1,0 +1,77 @@
+                              Cindy Keough
+                              century@nrel.colostate.edu
+                              10/06/00
+
+This directory contains the source files for the LIST100 utility.  This
+support utility for the Century model is used to create ASCII output files
+from the binary output file.  To build the list100 executable type the
+command:
+     list100.Make
+at the UNIX system prompt.  When you have successfully built the list100 
+utility copy or move the executable into the directory from which you will
+be running your Century simulations.  The directory from which you will
+be running your Century simulations should also contain the following
+files:
+     century
+     event100
+     file100
+     The parameter files:
+          crop.100
+          cult.100
+          fert.100
+          fire.100
+          fix.100
+          graz.100
+          harv.100
+          irri.100
+          omad.100
+          tree.100
+          trem.100
+          <site>.100   <- your site specific parameter file
+          *.sch        <- your schedule file for the simulation
+          *.wth        <- optional, a historical weather data
+                          file for the site
+          crop.def
+          cult.def
+          fert.def
+          fire.def
+          fix.def
+          graz.def
+          harv.def
+          irri.def
+          omad.def
+          site.def
+          tree.def
+          trem.def
+
+Please send an e-mail message to the address listed above to report any
+problems or to ask questions about the Century model.
+
+------------------------------------------------------------------------
+
+List100 is a utility used to read model output from a binary file
+and allow the user to specify which variables should be written
+to an ASCII .lis file.
+
+Running List100:
+
+List100 runs in either interactive mode or via command line arguments.
+
+To run with command line arguments, enter:
+     list100 binaryname asciiname varlistname starttime endtime
+where:
+     list100     - name of the executable program
+     binaryname  - name of the binary input file, without the '.bin' extension
+     ascciname   - name of the ascii output file, without the '.lis' extension
+     varlistname - name of the ascii file containing the list of variables to
+                   output, with one variable, including subscripts, on each
+                   line
+     starttime   - starting time, in real format, may be omitted to begin at
+                   time binary file begins (if starttime is omitted, endtime
+                   must also be omitted)
+     endtime     - ending time, in real format, may be omitted to end at time
+                   binary file end
+
+To run interactively, enter:
+     list100
+and answer each question as directed.

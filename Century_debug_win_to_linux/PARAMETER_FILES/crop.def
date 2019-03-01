@@ -1,0 +1,282 @@
+Crop options file "crop.100" will contain these values:
+prdx(1)         potential aboveground monthly production for crops 
+		(gC/m2)
+		Range: ? to ?
+
+ppdf(1)         optimum temperature for production for parameterization
+		of a Poisson Density Function curve to simulate 
+		temperature effect on growth
+		Range: ? to ?
+ 
+ppdf(2)         maximum temperature for production for parameterization of a
+                Poisson Density Function curve to simulate temperature effect 
+                on growth
+		Range: ? to ?
+
+ppdf(3)         left curve shape for parameterization of a Poisson Density 
+                Function curve to simulate temperature effect on growth
+		Range: ? to ?
+
+ppdf(4)         right curve shape for parameterization of a Poisson Density 
+                Function curve to simulate temperature effect on growth
+		Range: ? to ?
+
+bioflg		flag indicating whether production should be reduced by
+		physical obstruction
+		= 0 production should not be reduced
+		= 1 production should be reduced
+		Range: 0 or 1
+
+biok5           level of aboveground standing dead + 10% strucc(1) C at which 
+                production is reduced to half maximum due to physical obstruction
+		by the dead material, used only when bioflg = 1 (gC/m2)
+		Range: ? to ?
+
+pltmrf          planting month reduction factor to limit seedling growth;
+                should be 1.0 for grass
+		Range: 0 to 1
+
+fulcan          value of aglivc at full canopy cover, above which potential 
+                production is not reduced 
+		Range: ? to ?
+
+frtc(1)         initial fraction of C allocated to roots; for Great 
+		Plains equation based on precipitation, set to 0
+		Range: 0 to 1
+
+frtc(2)         final fraction of C allocated to roots
+		Range: 0 to 1
+
+frtc(3)         time after planting (months with soil temperature greater 
+		than rtdtmp) at which the final value is reached; must not
+		equal 0
+		Range: ? to ?
+
+biomax		biomass level above which the minimum and maximum C/E ratios
+		of the new shoot increments equal pramn(*,2) and pramx(*,2)
+		respectively (g biomass/m2)
+		Range: ? to ?
+
+pramn(1,1)      minimum C/N ratio with zero biomass
+		Range: ? to ?
+ 
+pramn(2,1)      minimum C/P ratio with zero biomass
+		Range: ? to ?
+
+pramn(3,1)      minimum C/S ratio with zero biomass
+		Range: ? to ?
+
+pramn(1,2)      minimum C/N ratio with biomass equal biomax
+		Range: ? to ?
+
+pramn(2,2)      minimum C/P ratio with biomass equal biomax
+		Range: ? to ?
+
+pramn(3,2)      minimum C/S ratio with biomass greater than or 
+		equal to biomax
+		Range: ? to ?
+
+pramx(1,1)      maximum C/N ratio with zero biomass
+		Range: ? to ?
+
+pramx(2,1)      maximum C/P ratio with zero biomass
+		Range: ? to ?
+
+pramx(3,1)      maximum C/S ratio with zero biomass
+		Range: ? to ?
+
+pramx(1,2)      maximum C/N ratio with biomass equal biomax
+		Range: ? to ?
+
+pramx(2,2)      maximum C/P ratio with biomass equal biomax
+		Range: ? to ?
+
+pramx(3,2)      maximum C/S ratio with biomass greater than or
+		equal to biomax
+		Range: ? to ?
+
+prbmn(1,1)      intercept parameter for computing minimum C/N ratio for below
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmn(2,1)      intercept parameter for computing minimum C/P ratio for 
+		belowground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmn(3,1)      intercept parameter for computing minimum C/S ratio for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmn(1,2)      slope parameter for computing minimum C/N ratio for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmn(2,2)      slope parameter for computing minimum C/P ratio for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmn(3,2)      slope parameter for computing minimum C/S ratio for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmx(1,1)      intercept parameter for computing maximum C/N ratios for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmx(2,1)      intercept parameter for computing maximum C/P ratios for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmx(3,1)      intercept parameter for computing maximum C/S ratios for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmx(1,2)      slope parameter for computing maximum C/N ratios for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmx(2,2)      slope parameter for computing maximum C/P ratios for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+prbmx(3,2)      slope parameter for computing maximum C/S ratios for below 
+		ground matter as a linear function of annual precipitation
+		Range: ? to ?
+
+fligni(1,1)     intercept for equation to predict lignin content fraction 
+		based on annual rainfall for aboveground material
+		Range: 0 to 1
+
+fligni(2,1)     slope for equation to predict lignin content fraction based on 
+		annual rainfall for aboveground material. For crops, set to 0.
+		Range: 0 to 1
+
+fligni(1,2)     intercept for equation to predict lignin content fraction based 
+		on annual rainfall for belowground material
+		Range: 0 to 1
+
+fligni(2,2)     slope for equation to predict lignin content fraction based on 
+		annual rainfall for belowground material. For crops, set to 0.
+		Range: 0 to 1
+
+himax           harvest index maximum (fraction of aboveground live C
+		in grain)
+		Range: 0 to 1
+
+hiwsf           harvest index water stress factor
+		= 0 no effect of water stress
+		= 1 no grain yield with maximum water stress
+		Range: 0 or 1
+
+himon(1)	number of months prior to harvest in which to begin accumulating
+                water stress effect on harvest index
+		Range: ? to ?
+
+himon(2)	number of months prior to harvest in which to stop accumulating
+                water stress effect on harvest index
+		Range: 0 to 12
+
+efrgrn(1)       fraction of the aboveground N which goes to grain 
+		Range: 0 to 1
+
+efrgrn(2)       fraction of the aboveground P which goes to grain
+		Range: 0 to 1
+
+efrgrn(3)       fraction of the aboveground S which goes to grain
+		Range: 0 to 1
+
+vlossp          fraction of aboveground plant N which is volatilized 
+		(occurs only at harvest)
+		Range: 0 to 1
+
+fsdeth(1)	maximum shoot death rate at very dry soil conditions 
+		(fraction/month); for getting the monthly shoot death rate,
+		this fraction is multiplied times a reduction factor 
+		depending on the soil water status
+		Range: 0 to 1
+ 
+fsdeth(2)       fraction of shoots which die during senescence month; must be
+		greater than or equal to 0.4
+		Range: 0 to 1
+
+fsdeth(3)       additional fraction of shoots which die when aboveground live 
+		C is greater than fsdeth(4)
+		Range: 0 to 1
+
+fsdeth(4)       the level of aboveground C above which shading occurs and 
+		shoot senescence increases 
+		Range: ? to ?
+
+fallrt          fall rate (fraction of standing dead which falls each month)
+		Range: 0 to 1
+ 
+rdr		maximum root death rate at very dry soil conditions 
+		(fraction/month); for getting the monthly root death rate,
+		this fraction is multiplied times a reduction factor 
+		depending on the soil water status
+		Range: 0 to 1
+ 
+rtdtmp          physiological shutdown temperature for root death and change 
+		in shoot/root ratio
+		Range: ? to ?
+
+crprtf(1)	fraction of N retranslocated from grass/crop leaves at death
+		Range: 0 to 1
+
+crprtf(2)	fraction of P retranslocated from grass/crop leaves at death
+		Range: 0 to 1
+
+crprtf(3)	fraction of S retranslocated from grass/crop leaves at death
+		Range: 0 to 1
+
+snfxmx(1)       symbiotic N fixation maximum for grassland/crop
+		(g N fixed/g C new growth)
+		Range: ? to ?
+
+del13c		delta 13C value for stable isotope labeling
+		Range: ? to ?
+
+co2ipr(1)	in a grassland/crop system, the effect on plant production
+                of doubling the atmospheric CO2 concentration from
+                350 ppm to 700 ppm
+		Range: ? to ?
+
+co2itr(1)	in a grassland/crop system, the effect on transpiration rate 
+                of doubling the atmospheric CO2 concentration from 
+                350 ppm to 700 ppm 
+		Range: ? to ?
+
+co2ice(1,1,1)	in a grassland/crop system, the effect on minimum C/N ratio
+		of doubling the atmospheric CO2 concentration from
+                350 ppm to 700 ppm 
+		Range: ? to ?
+
+co2ice(1,1,2)	in a grassland/crop system, the effect on minimum C/P ratio 
+                of doubling the atmospheric CO2 concentration from
+                350 ppm to 700 ppm
+		Range: ? to ?
+
+co2ice(1,1,3)	in a grassland/crop system, the effect on minimum C/S ratio 
+                of doubling the atmospheric CO2 concentration from
+                350 ppm to 700 ppm
+		Range: ? to ?
+
+co2ice(1,2,1)	in a grassland/crop system, the effect on maximum C/N ratio
+		of doubling the atmospheric CO2 concentration from
+                350 ppm to 700 ppm 
+		Range: ? to ?
+
+co2ice(1,2,2)	in a grassland/crop system, the effect on maximum C/P ratio 
+                of doubling the atmospheric CO2 concentration from
+                350 ppm to 700 ppm
+		Range: ? to ?
+
+co2ice(1,2,3)	in a grassland/crop system, the effect on maximum C/S ratio 
+                of doubling the atmospheric CO2 concentration from
+                350 ppm to 700 ppm
+		Range: ? to ?
+
+co2irs(1)	in a grassland/crop system, the effect on root-shoot ratio
+                of doubling the atmospheric CO2 concentration from
+                350 ppm to 700 ppm
+		Range: ? to ?

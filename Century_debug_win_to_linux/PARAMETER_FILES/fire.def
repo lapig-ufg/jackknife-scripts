@@ -1,0 +1,30 @@
+Fire option file "fire.100" will contain these values:
+flfrem          fraction of live shoots removed by a fire event
+		Range: 0 to 1
+ 
+fdfrem(1)       fraction of standing dead plant material removed by a fire event
+		Range: 0 to 1
+
+fdfrem(2)       fraction of surface litter removed by a fire event
+		Range: 0 to 1
+
+fret(1)         fraction of N in the burned aboveground material removed 
+		by a fire event 
+		Range: 0 to 1
+
+fret(2)         fraction of P in the burned aboveground material removed 
+		by a fire event
+		Range: 0 to 1
+
+fret(3)         fraction of S in the burned aboveground material removed 
+		by a fire event 
+		Range: 0 to 1
+
+frtsh           additive effect of burning on root/shoot ratio
+		Range: ? to ?
+
+fnue(1)         effect of fire on increase in maximum C/N ratio of shoots
+		Range: ? to ?
+
+fnue(2)         effect of fire on increase in maximum C/N ratio of roots
+		Range: ? to ?

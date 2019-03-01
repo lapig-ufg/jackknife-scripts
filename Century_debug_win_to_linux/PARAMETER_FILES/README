@@ -1,0 +1,70 @@
+						Cindy Keough
+						century@nrel.colostate.edu
+						10/26/98
+
+This directory contains sample parameter files that you can use to help you
+get Century up and running.  Please send an e-mail message to the address
+listed above to report any problems or to ask questions about the Century
+model.
+
+
+Parameter files:
+
+crop.100 - crops
+cult.100 - cultivation events
+fert.100 - fertilization events
+fire.100 - fire events
+fix.100  - fixed parameters for a subhumid grassland
+graz.100 - grazing events
+harv.100 - harvest events 
+irri.100 - irrigation events
+omad.100 - organic matter addition events
+tree.100 - trees
+trem.100 - tree removal events
+
+
+There are biome specific fix.100 files.  These files differ primarily in the
+FWLOSS(x) parameters that adjust the relative impact of a PET equation 
+originally developed for the tropics.  Select the appropriate fix file for
+your site from the list below and copy it to "fix.100" before running your
+simulation.  When simulating a savanna use the fix file that corresopnds to
+the grass component of your system.
+
+arcfix.100   - arctic tundra
+borfix.100   - boreal forest
+dryffix.100  - dry forest
+drygfix.100  - dry grassland
+drytrpfi.100 - dry tropical
+ffix.100     - forest
+gfix.100     - mesic/subhumid grassland
+trpfix.100   - tropical
+
+
+Also included are several site files.  The values in these files are
+based on information gathered at LTER sites.  For more information
+about the LTER (Long-Term Ecological Research) program or the individual
+sites please access the LTER homepage - http://lternet.edu
+
+aridsl.100 - Jornada Experimental Range, hot desert
+boreal.100 - Bonanza Creek Experimental Forest, boreal forest
+c3grs.100  - Shortgrass Steppe, shortgrass steppe (formerly called Central
+	     Plains Experimental Range)
+c4grs.100  - Konza Prairie Research Natural Area, tallgrass prairie
+tconif.100 - H.J. Andrews Experimental Forest, temperate coniferous forest
+tdecid.100 - Cowetta Hydrologic Lab, eastern deciduous forest
+tropeg.100 - Luquillo Experimental Forest, tropical rainforest
+tsavan.100 - Konza Prairie Research Natural Area, tallgrass prairie
+tundra.100 - Niwot Ridge/Green Lake Valley, alpine tundra
+
+
+And sample schedule files:
+
+aridsl.sch - northern hemisphere arid shrubland
+boreal.sch - boreal forest
+c3grs.sch  - northern hemisphere c3 dominated
+c4grs.sch  - northern hemisphere c4 dominated
+tconif.sch - temperate mixed forest
+tdecid.sch - temperate deciduous forest
+tropeg.sch - tropical evergreen forest
+tsavan.sch - temperate savanna
+tundra.sch - northern hemisphere tundra (grass)

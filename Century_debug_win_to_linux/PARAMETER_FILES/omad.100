@@ -1,0 +1,14 @@
+M     STRAW_MANURE
+100.00000         'ASTGC'     
+0.00000           'ASTLBL'    
+0.25000           'ASTLIG'    
+30.00000          'ASTREC(1)' 
+300.00000         'ASTREC(2)' 
+300.00000         'ASTREC(3)' 
+W     WHEAT_STRAW
+100.00000         'ASTGC'     
+0.00000           'ASTLBL'    
+0.15000           'ASTLIG'    
+80.00000          'ASTREC(1)' 
+300.00000         'ASTREC(2)' 
+300.00000         'ASTREC(3)' 

@@ -1,0 +1,61 @@
+Tree removal options file "trem.100" will contain these values:
+evntyp          = 0 for cutting event
+		= 1 for fire event 
+		Range: 0 or 1
+
+remf(1)         fraction of leaf live component returned
+		Range: 0 to 1
+
+remf(2)         fraction of fine branch live component returned
+		Range: 0 to 1
+
+remf(3)         fraction of large wood live component returned
+		Range: 0 to 1
+
+remf(4)         fraction of fine branch dead component returned
+		Range: 0 to 1
+
+remf(5)         fraction of large wood dead component returned
+		Range: 0 to 1
+
+fd(1)           fraction of fine root component that dies
+		Range: 0 to 1
+
+fd(2)           fraction of coarse root component that dies
+		Range: 0 to 1
+
+retf(1,1)       fraction of C that is returned in the live leaf component
+		Range: 0 to 1
+
+retf(1,2)       fraction of N that is returned in the live leaf component
+		Range: 0 to 1
+
+retf(1,3)       fraction of P that is returned in the live leaf component
+		Range: 0 to 1
+
+retf(1,4)       fraction of S that is returned in the live leaf component
+		Range: 0 to 1
+
+retf(2,1)       fraction of C that is returned in the fine branch component
+		Range: 0 to 1
+
+retf(2,2)       fraction of N that is returned in the fine branch component
+		Range: 0 to 1
+
+retf(2,3)       fraction of P that is returned in the fine branch component
+		Range: 0 to 1
+
+retf(2,4)       fraction of S that is returned in the fine branch component
+		Range: 0 to 1
+
+retf(3,1)       fraction of C that is returned in the large wood component
+		Range: 0 to 1
+
+retf(3,2)       fraction of N that is returned in the large wood component
+		Range: 0 to 1
+
+retf(3,3)       fraction of P that is returned in the large wood component
+		Range: 0 to 1
+
+retf(3,4)       fraction of S that is returned in the large wood component
+		Range: 0 to 1
