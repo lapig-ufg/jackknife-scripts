@@ -68,6 +68,6 @@ bfastResult <- do.call('rbind', bfastResultList)
 # print((endTime - startTime))
 
 
-# bfastResultListTableFormated <- write.table(bfastResult, col.names = FALSE, row.names = FALSE, sep = ";", file = paste0(layername,".csv"))
-print("Write CSV file")
-write.table(bfastResult, col.names = FALSE, row.names = FALSE, sep = ";", file = paste0(layername,".csv"))
+bfastResultListTableFormated <- write.table(bfastResult, col.names = FALSE, row.names = FALSE, sep = ";", file = paste0(layername,".csv"))
+# print("Write CSV file")
+# write.table(bfastResult, col.names = FALSE, row.names = FALSE, sep = ";", file = paste0(layername,".csv"))
