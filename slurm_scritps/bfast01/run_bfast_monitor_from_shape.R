@@ -6,9 +6,9 @@ args = commandArgs(trailingOnly=TRUE)
 layername = tools::file_path_sans_ext(args[1])
 
 print("Reading shapefile")
-features <- readOGR(dsn = ".", layer = layername)
+features <- suppressMessages(readOGR(dsn = ".", layer = layername, verbose=FALSE, stringsAsFactors=FALSE))
 coordinates <- features@coords
-coordinates <- coordinates[1:100,]
+coordinates <- coordinates[args[2]:args[3],]
 
 bfast_apply = function(coordinate) {
 	
@@ -26,6 +26,7 @@ bfast_apply = function(coordinate) {
 	}
 
 	ndvi <- brick("/data/DADOS_GRID/BFAST10/shape/mod13q1_ndvi_maxmin_list.tif")
+	#ndvi <- brick("/data/DADOS_GRID/pa_br_ndvi_maxmin_250_lapig/pa_br_ndvi_maxmin_250.vrt")
 
 	lon <- coordinate[1]
 	lat <- coordinate[2]
@@ -48,19 +49,25 @@ bfast_apply = function(coordinate) {
 
 ncores = detectCores()
 clusterPool = makeCluster(ncores)
-clusterEvalQ(clusterPool, {
+
+
+hideOutput <- capture.output(output <- clusterEvalQ(clusterPool, {
   	suppressMessages(library(bfast))
 	suppressMessages(library(raster))
 	suppressMessages(library(rgdal))
-})
+}))
 
-startTime <- Sys.time()
-print("Running bfast")
+# startTime <- Sys.time()
+# print("Running bfast")
+
 bfastResultList <- parApply(cl = clusterPool, coordinates, 1, bfast_apply)
 bfastResult <- do.call('rbind', bfastResultList)
-endTime <- Sys.time()
-cat("time:\n")
-print((endTime - startTime))
 
+# endTime <- Sys.time()
+# cat("time:\n")
+# print((endTime - startTime))
+
+
+# bfastResultListTableFormated <- write.table(bfastResult, col.names = FALSE, row.names = FALSE, sep = ";", file = paste0(layername,".csv"))
 print("Write CSV file")
 write.table(bfastResult, col.names = FALSE, row.names = FALSE, sep = ";", file = paste0(layername,".csv"))
