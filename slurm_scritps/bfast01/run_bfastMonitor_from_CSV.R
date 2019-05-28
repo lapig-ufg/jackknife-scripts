@@ -6,7 +6,7 @@ suppressMessages(library(dplyr))
 args = commandArgs(trailingOnly=TRUE)
 
 # Retrieve the ids of the coordinates in the csv file
-features <- read.csv("/data/SENTINEL/DPAT/BFASTMonitor/ids_seq_teste.csv", fill = TRUE, sep = ",")
+features <- read.csv("/data/SENTINEL/DPAT/BFASTMonitor/ids_pontos_bfastMonitor.csv", fill = TRUE, sep = ",")
 ndvi <- brick("/data/DADOS_GRID/pa_br_ndvi_maxmin_250_lapig_2000_2019.tif")
 
 select_seq_id <- features %>% select(lon, lat, seq_id) %>% filter(seq_id == args)
@@ -58,27 +58,3 @@ bfast_apply = function(lon, lat) {
 for (i in 1:length(lon)) {
 	bfast_apply(lon[i], lat)
 }
-
-
-# ncores = detectCores()
-# clusterPool = makeCluster(ncores)
-
-# hideOutput <- capture.output(output <- clusterEvalQ(clusterPool, {
-#   	suppressMessages(library(bfast))
-#   	suppressMessages(library(raster))
-# 	suppressMessages(library(rgdal))
-# }))
-
-# startTime <- Sys.time()
-# print("Running bfast")
-
-# bfastResultList <- parApply(cl = clusterPool, coords_mat_s4, 1, bfast_apply)
-# bfastResult <- do.call('rbind', bfastResultList)
-
-# endTime <- Sys.time()
-# cat("time:\n")
-# print((endTime - startTime))
-
-# bfastResultListTableFormated <- write.table(bfastResult, col.names = FALSE, row.names = FALSE, sep = ";")
-# print("Write CSV file")
-# write.table(bfastResult, col.names = FALSE, row.names = FALSE, sep = ";", file = paste0('layername',".csv"))
