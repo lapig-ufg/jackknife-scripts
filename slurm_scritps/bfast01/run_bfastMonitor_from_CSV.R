@@ -1,20 +1,31 @@
-suppressMessages(library(parallel))
 suppressMessages(library(bfast))
 suppressMessages(library(raster))
 suppressMessages(library(dplyr))
 
-args = commandArgs(trailingOnly=TRUE)
+args = as.numeric(commandArgs(trailingOnly=TRUE))
 
 # Retrieve the ids of the coordinates in the csv file
-features <- read.csv("/data/SENTINEL/DPAT/BFASTMonitor/ids_pontos_bfastMonitor.csv", fill = TRUE, sep = ",")
+features <- read.csv("/data/DADOS_GRID/result_BFASTMonitor/ids_pontos_faltando.csv", fill = TRUE, sep = ",")
 ndvi <- brick("/data/DADOS_GRID/pa_br_ndvi_maxmin_250_lapig_2000_2019.tif")
 
-select_seq_id <- features %>% select(lon, lat, seq_id) %>% filter(seq_id == args)
+### Rodando para pontos faltantes:
+distinct_ids = features %>% select(seq_id) %>% distinct(seq_id)
+distinct_vector = distinct_ids$seq_id
+
+select_seq_id <- features %>% select(lon, lat, seq_id) %>% filter(seq_id == distinct_vector[args])
 # coordinatesRow <- select_seq_id %>% select(lon, lat)
 # coords_mat_s4 <- as.matrix(coordinatesRow)
 
 lat = select_seq_id$lat[1]
 lon = select_seq_id$lon
+
+ lat = -18.9048292
+ lon = -43.872104
+
+# Error
+ lat = -8.87707128
+ lon = -49.6984509
+
 
 # Creating a Coordinate S4 Class
 # setClass("coordinates", slots=list(lon="numeric", lat="numeric"))
@@ -22,7 +33,9 @@ lon = select_seq_id$lon
 
 
 bfast_apply = function(lon, lat) {
-	
+
+outError <- tryCatch( {
+
 	run_bfast_monitor = function(ndvi_ts) {
 		
 		monitor <- bfastmonitor(ndvi_ts, start = c(2015, 12), formula = response ~ harmon + trend, history = "all")
@@ -37,13 +50,20 @@ bfast_apply = function(lon, lat) {
 	}
 
 	cell <- cellFromXY(ndvi, c(lon, lat))
+
 	ndvi_vals <- as.numeric(ndvi[cell])
-	
-	# ndvi_vals <- ndvi_vals[1:414]
+
+	if(any(ndvi_vals == "-Inf")){
+
+		result_bfastmonitor <- cbind(monitor_breakpoint = NA, monitor_magnitude = NA)
+
+	} else {
 
 	ndvi_ts <- ts(ndvi_vals, start= c(2000, 2), frequency = 23)
 
 	result_bfastmonitor <- run_bfast_monitor(ndvi_ts)
+	
+	}
 
 	result = data.frame(
 		"lon" = lon,
@@ -52,8 +72,22 @@ bfast_apply = function(lon, lat) {
 
 	bfastMonitorResult <- cbind(result, result_bfastmonitor)
 	bfastMonitorTableFormated <- write.table(bfastMonitorResult, col.names = FALSE, row.names = FALSE, sep = ";")
-}
 
+
+	}, error = function(err){
+		message(paste("Error in :", lon, lat))
+		message(err)
+	}
+	# , finally = {
+	# 	print("Teste finally")
+	# }
+
+)
+
+	#return(outError)
+	#return(result)
+
+}
 
 for (i in 1:length(lon)) {
 	bfast_apply(lon[i], lat)
