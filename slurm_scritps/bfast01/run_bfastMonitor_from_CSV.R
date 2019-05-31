@@ -19,12 +19,13 @@ select_seq_id <- features %>% select(lon, lat, seq_id) %>% filter(seq_id == dist
 lat = select_seq_id$lat[1]
 lon = select_seq_id$lon
 
- lat = -18.9048292
- lon = -43.872104
+# OK
+# lat = -18.9048292
+# lon = -43.872104
 
 # Error
- lat = -8.87707128
- lon = -49.6984509
+# lat = -8.87707128
+# lon = -49.6984509
 
 
 # Creating a Coordinate S4 Class
@@ -43,7 +44,7 @@ outError <- tryCatch( {
 		monitor_breakpoint = monitor$breakpoint
 		monitor_magnitude = monitor$magnitude
 
-		return(data.frame( 
+			return(data.frame( 
 				"monitor_breakpoint" = monitor_breakpoint,
 				"monitor_magnitude" = monitor_magnitude
 			))
@@ -53,15 +54,16 @@ outError <- tryCatch( {
 
 	ndvi_vals <- as.numeric(ndvi[cell])
 
-	if(any(ndvi_vals == "-Inf")){
+	# any(na.rm = TRUE, ndvi_vals == "-Inf")
+	if (any(ndvi_vals == "-Inf")) {
 
 		result_bfastmonitor <- cbind(monitor_breakpoint = NA, monitor_magnitude = NA)
 
 	} else {
 
-	ndvi_ts <- ts(ndvi_vals, start= c(2000, 2), frequency = 23)
+		ndvi_ts <- ts(ndvi_vals, start= c(2000, 2), frequency = 23)
 
-	result_bfastmonitor <- run_bfast_monitor(ndvi_ts)
+		result_bfastmonitor <- run_bfast_monitor(ndvi_ts)
 	
 	}
 
@@ -82,10 +84,7 @@ outError <- tryCatch( {
 	# 	print("Teste finally")
 	# }
 
-)
-
-	#return(outError)
-	#return(result)
+	)
 
 }
 
