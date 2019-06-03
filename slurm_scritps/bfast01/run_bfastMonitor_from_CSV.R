@@ -55,7 +55,7 @@ outError <- tryCatch( {
 	ndvi_vals <- as.numeric(ndvi[cell])
 
 	# any(na.rm = TRUE, ndvi_vals == "-Inf")
-	if (any(ndvi_vals == "-Inf")) {
+	if (any(ndvi_vals %in% "-Inf")) {
 
 		result_bfastmonitor <- cbind(monitor_breakpoint = NA, monitor_magnitude = NA)
 
