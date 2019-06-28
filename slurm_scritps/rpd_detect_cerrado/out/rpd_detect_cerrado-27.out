@@ -1,0 +1,5 @@
+GRID-127
+Erro: ']' inesperado in:
+"    
+    ndvi <- as.numeric(data]"
+Execução interrompida
