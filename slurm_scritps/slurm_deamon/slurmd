@@ -1,0 +1,55 @@
+#!/bin/bash
+#
+# chkconfig: 345 90 10
+# description: Slurmd
+#
+# processname: /usr/sbin/slurmd
+# pidfile: /data/LOCAL/slurmd/slurmd.pid
+#
+# config: /etc/slurm-llnl/slurm.conf
+#
+### BEGIN INIT INFO
+# Provides:		slurmd
+# Required-Start:	$remote_fs $syslog munge
+# Required-Stop:	$remote_fs $syslog munge
+# Default-Start: 	2 3 4 5
+# Default-Stop: 	0 1 6 
+# Short-Description: 	Slurmd deamon management
+# Description: 		Start Slurmd to provide resource management
+### END INIT INFO
+
+sudo hostnamectl set-hostname $(cat /data/LOCAL/etc/hostname)
+
+NAME="slurmd"
+CONF_FILE="/etc/slurm-llnl/slurm.conf"
+DAEMON="/usr/sbin/slurmd"
+OPTIONS="-f /etc/slurm-llnl/slurm.conf"
+PIDFILE="/data/LOCAL/slurmd/slurmd.pid"
+USER="root"
+
+
+case "$1" in
+	start)
+		echo "Starting ${NAME} "
+		/sbin/start-stop-daemon --background --start --chuid $USER --pidfile=$PIDFILE --exec $DAEMON -- $OPTIONS
+		;;
+	stop)
+		echo "Stopping ${NAME} "
+		/sbin/start-stop-daemon --stop --chuid $USER --pidfile=$PIDFILE --exec $DAEMON -- $OPTIONS
+		;;
+	restart)
+		/sbin/start-stop-daemon --stop --chuid $USER --pidfile=$PIDFILE --exec $DAEMON -- $OPTIONS
+		/sbin/start-stop-daemon --background --start --chuid $USER --pidfile=$PIDFILE --exec $DAEMON -- $OPTIONS	
+		;;
+
+	status)
+		echo "${NAME} pid "$(cat $PIDFILE)
+		;;
+
+	*)
+		echo "Usage: $1 {start|stop|restart|status}"
+		exit 1
+esac
+
+exit 0
+
