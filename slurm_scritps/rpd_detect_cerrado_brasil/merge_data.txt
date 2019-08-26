@@ -1,0 +1,7 @@
+gdal_merge.py result/ano_intervencao_block*.tif -o mosaic/ano_intervencao_block_cerrado.tif -n 0 -a_nodata 0 -co COMPRESS=LZW -co BIGTIFF=YES -co TFW=YES 
+
+gdal_merge.py result/amplitude_antes_block*.tif -o mosaic/amplitude_antes_block_cerrado.tif -n 0 -a_nodata 0 -co COMPRESS=LZW -co BIGTIFF=YES -co TFW=YES 
+gdal_merge.py result/amplitude_apos_block*.tif -o mosaic/amplitude_apos_block_cerrado.tif -n 0 -a_nodata 0 -co COMPRESS=LZW -co BIGTIFF=YES -co TFW=YES 
+
+gdal_merge.py result/slope_antes_block*.tif -o mosaic/slope_antes_block_cerrado.tif -n 0 -a_nodata 0 -co COMPRESS=LZW -co BIGTIFF=YES -co TFW=YES 
+gdal_merge.py result/slope_apos_block*.tif -o mosaic/slope_apos_block_cerrado.tif -n 0 -a_nodata 0 -co COMPRESS=LZW -co BIGTIFF=YES -co TFW=YES 
