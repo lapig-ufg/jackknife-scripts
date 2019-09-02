@@ -1,0 +1,7 @@
+#!/bin/bash
+for grid_id in $(seq 105 160); do
+	echo Stroping $grid_id
+	#ssh-copy-id lapig@10.0.3.160
+	ssh -o "ConnectTimeout=5" lapig@10.0.3.$grid_id 'sudo reboot'
+	sleep 5
+done

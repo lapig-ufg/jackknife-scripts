@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for grid_id in $(seq 105 160); do
+	echo Setting up Display on GRID$grid_id
+	ssh -o "ConnectTimeout=2" lapig@10.0.3.$grid_id 'set |grep DISPLAY'
+done

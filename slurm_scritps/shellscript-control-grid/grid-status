@@ -1,0 +1,4 @@
+#!/bin/bash
+for grid_id in $(seq 105 160); do
+	echo $grid_id $(ping -c1 10.0.3.$grid_id | grep '1 packets')
+done

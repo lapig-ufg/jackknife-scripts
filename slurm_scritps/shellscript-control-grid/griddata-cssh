@@ -1,0 +1,6 @@
+#!/bin/bash
+IPS=""
+for grid_id in $(seq 101 104); do
+	IPS="$IPS 10.0.3.$grid_id"
+done
+cssh $IPS

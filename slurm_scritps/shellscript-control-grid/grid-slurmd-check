@@ -1,0 +1,5 @@
+#!/bin/bash
+for grid_id in $(seq 105 160); do
+	echo Checking GRID$grid_id
+	ssh -o "ConnectTimeout=5" lapig@10.0.3.$grid_id 'sudo /etc/init.d/slurmd status'
+done
