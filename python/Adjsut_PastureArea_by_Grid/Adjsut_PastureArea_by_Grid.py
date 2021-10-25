@@ -107,6 +107,15 @@ def loop_zonal_stats(input_zone_polygon, input_raster_dir,field_name,out_dir,pre
 
             df  = pd.concat([df,pd.DataFrame(result,index=[0])])
 
+    output_name = os.path.join(out_dir,'Pasture_Grid_Adjust_Percentage_Brasil.csv')
+
+    df = df.replace(numpy.nan, 0)
+
+    pd.options.display.float_format = '{:.4f}'.format
+
+    df.to_csv(output_name,mode='w',index = False,sep =';')
+
+    print('Your tables is finished so the hard work starts now (raster mosaicking). Take a good nap!')
 
     year_dirList = [directory for directory in os.listdir(out_dir) if os.path.isdir(os.path.join(out_dir,directory))]
 
@@ -117,15 +126,5 @@ def loop_zonal_stats(input_zone_polygon, input_raster_dir,field_name,out_dir,pre
         os.system('gdalbuildvrt -srcnodata 0 -vrtnodata 0 ' + os.path.join(out_dir,year +'.vrt ') + ' '.join(files))
         os.system('gdal_translate -a_nodata 0 -of COG ' + os.path.join(out_dir,year +'.vrt ')+ os.path.join(out_dir,year +'.cog ') + '-co COMPRESS=LZW -co BIGTIFF=IF_NEEDED')
         os.system('del ' + os.path.join(out_dir,year +'.vrt '))
-
-    output_name = os.path.join(out_dir,'Pasture_Grid_Adjust_Percentage_Brasil.csv')
-
-    df = df.replace(numpy.nan, 0)
-
-    pd.options.display.float_format = '{:.4f}'.format
-
-    df.to_csv(output_name,mode='w',index = False,sep =';')
-
-    print('The entire process is now over. Take a good nap!')
 
 loop_zonal_stats(sys.argv[1], sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
