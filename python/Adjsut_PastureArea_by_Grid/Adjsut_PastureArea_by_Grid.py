@@ -115,7 +115,7 @@ def loop_zonal_stats(input_zone_polygon, input_raster_dir,field_name,out_dir,pre
 
     df.to_csv(output_name,mode='w',index = False,sep =';')
 
-    print('Your tables is finished so the hard work starts now (raster mosaicking). Take a good nap!')
+    print('Your tables are ready, so the hard work starts now (raster mosaic). Take a good nap!')
 
     year_dirList = [directory for directory in os.listdir(out_dir) if os.path.isdir(os.path.join(out_dir,directory))]
 
